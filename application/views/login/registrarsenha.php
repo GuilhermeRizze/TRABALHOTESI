@@ -14,8 +14,8 @@
         <label>Senha</label>
         <input type="password" name="senha" required/>
         <br />
-        <label>Chave</label>
-        <input type="text" name="chave" required/>
+        <label>Usuario</label>
+        <input type="text" name="Usuario" required/>
         <br />
         <input type="submit" value="Criar" />
     </form>

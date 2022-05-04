@@ -1,7 +1,7 @@
 <?php
     class Login extends CI_Controller {
 
-        private $qqur = "Palmeiraséoprimeirocampeaomundialissooccorrreuem1951, parlmeiraéolmelhorabeléomelhorchupacurintia@345";
+        private $qqur = "";
 
         public function __construct() {
             parent::__construct();
@@ -17,14 +17,14 @@
             $num5 = rand(0, 9);
             $num6 = rand(0, 9);
 
-            $chave = $num1 . '' . $num2 . ''.
+            $usuario = $num1 . '' . $num2 . ''.
                         $num3 . '-' . $num4 . ''.
                         $num5 . '' . $num6 . '';
 
             $data = array(
                 "email" => $_POST["email"],
-                "nome" => $_POST["nome"],
-                "chave" => $chave
+                "senha" => $_POST["senha"],
+                "usuario" => $usuario
             );
 
             //$this->load->model("LoginModel");
@@ -50,11 +50,11 @@
         public function AlterarSenha() {
             $senha = md5( $_POST["senha"] . $this->qqur );
             $email = $_POST["email"];
-            $chave = $_POST["chave"];
+            $usuario = $_POST["usuario"];
             
             //$this->load->model("LoginModel");
             
-            $retorno = $this->LoginModel->CriarSenha($email, $senha, $chave);
+            $retorno = $this->LoginModel->CriarSenha($email, $senha, $usuario);
 
             if ($retorno)
                 echo "Senha cadastrada com sucesso.";

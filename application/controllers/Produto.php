@@ -1,43 +1,43 @@
 <?php
 
-    class Veiculo extends CI_Controller {
+    class Produto extends CI_Controller {
 
         public function __construct() {
             parent::__construct();
 
-            if (    !isset($_SESSION["tesi2022"]) ) {
+            if (    !isset($_SESSION["Usuario"]) ) {
                 header("location: /index.php/login");
             }
         }
 
         public function index() {
-            $this->load->model("VeiculoModel");
+            $this->load->model("ProdutoModel");
 
-            $veiculos = $this->VeiculoModel->selecionarTodos();
+            $produto = $this->ProdutoModel->selecionarTodos();
             $tabela = "";
 
             //echo "Bem vindo " . @$_SESSION["tesi2022"]["email"];
 
-            foreach($veiculos as $item ) {
+            foreach($produto as $item ) {
                 //GET
                 $tabela = $tabela . "<tr>";
 
-                if ( isset($_SESSION["tesi2022"])) {
+                if ( isset($_SESSION["Usuario"])) {
                     $tabela = $tabela . "
                         <td style='cursor: pointer'>
-                            <a href='/index.php/veiculo/alterar?codigo=" . $item->id . "'>
+                            <a href='/index.php/produto/alterar?codigo=" . $item->id . "'>
                                 ✏️
                             </a>
-                            <a href='/index.php/veiculo/excluir?codigo=" . $item->id . "'>
+                            <a href='/index.php/produto/excluir?codigo=" . $item->id . "'>
                                 ❌    
                             </a>
                         </td>";
                 }
 
                 $tabela = $tabela . "
-                        <td>" . $item->marca ."</td>
-                        <td>" . $item->modelo ."</td>
-                        <td>" . $item->cor_nome ."</td>
+                        <td>" . $item->nome ."</td>
+                        <td>" . $item->perecivel ."</td>
+                        <td>" . $item->tipo_produto ."</td>
                         <td>" . $item->valor ."</td>
                         <td>
                             <img src='" . $item->imagem . "' style='width:150px' />
@@ -47,69 +47,68 @@
             }
 
             $variavel = array(
-                "lista_veiculos" => $veiculos,
+                "lista_produtos" => $produto,
                 "tabela" => $tabela,
-                "titulo" => "Você está em Marquinhos veiculos",
-                "sucesso" => "Veiculo add com sucesso",
-                "erro" => "sdadasda"
+                "titulo" => "Você está na Padaria do Barba",
+                "sucesso" => "Produto adicionado com sucesso",
+                "erro" => "404"
             );
 
-            $this->template->load("templates/adminTemp", "veiculo/index", $variavel );
+            $this->template->load("templates/adminTemp", "produto/index", $variavel );
         }
 
-        //Alteração de veículo
+        //Alteração de produto
         public function alterar() {
-            $this->load->model("VeiculoModel");
+            $this->load->model("ProdutoModel");
 
             $id = $_GET["codigo"];
 
-            $retorno = $this->VeiculoModel->buscarId( $id );
+            $retorno = $this->ProdutoModel->buscarId( $id );
             
             $data = array(
-                "titulo"=>"Alteração de veículos",
-                "veiculo"=>$retorno[0],
+                "titulo"=>"Alteração de Produto",
+                "Produto"=>$retorno[0],
                 "opcoes"=>$this->montaComboCores($retorno[0]->cor) //3, 4, 5
             );
 
-            $this->template->load("templates/adminTemp", "veiculo/formAlterar", $data);
+            $this->template->load("templates/adminTemp", "produto/formAlterar", $data);
 
 
         }
 
         //Salva os dados atualizados 
         public function salvaralteracao() {
-            $this->load->model("VeiculoModel");
+            $this->load->model("ProdutoModel");
 
             $id = $_POST["id"];
-            $marca = $_POST["marca"];
-            $modelo = $_POST["modelo"];
-            $ano = $_POST["ano"];
+            $nome = $_POST["nome"];
+            $perecivel = $_POST["perecivel"];
+            $tipo_produto = $_POST["tipo_produto"];
             $valor = $_POST["valor"];
             $imagem = $_POST["imagem"];
-            $cor = $_POST["cor"];
 
-            $retorno = $this->VeiculoModel->salvaraltercao(
-                $id, $marca, $modelo, $ano, $valor, $imagem, $cor
+            $retorno = $this->ProdutoModel->salvaraltercao(
+                $id, $nome, $perecivel, $tipo_produto, $valor, $imagem,
             );
 
             if ($retorno == true) {
-                header('location: /index.php/veiculo');
+                header('location: /index.php/produto');
             }
             else {
-                echo "houve erro na alteração";
+                echo "Ocorreu um erro na alteração";
             }
         }
         
-        //Criar veiculo
+        //Cadastro
         public function formNovo() {
 
-            $opcao = $this->montaComboCores( 0 );
+           $opcao = $this->montaComboCores( 0 );
             
-            $data = array(
+           $data = array(
                 'opcoes' => $opcao
             );
 
-            $this->template->load("templates/adminTemp","/veiculo/formnovo", $data);
+            $this->template->load("templates/adminTemp","/produto/formnovo", $data);
         }
 
         private function montaComboCores( $idCor ) {
@@ -138,39 +137,38 @@
         //Salvar novo veiculo
         public function salvarnovo() {
             
-            $this->load->model("VeiculoModel");
+            $this->load->model("ProdutoModel");
 
-            $marca = $_POST["marca"];
-            $modelo = $_POST["modelo"];
-            $ano = $_POST["ano"];
+            $nome = $_POST["nome"];
+            $perecivel = $_POST["perecivel"];
+            $tipo_produto = $_POST["tipo_produto"];
             $valor = $_POST["valor"];
             $imagem = $_POST["imagem"];
-            $cor = $_POST["cor"];
 
-            $retorno = $this->VeiculoModel->buscarModelo( $modelo );
+            $retorno = $this->ProdutoModel->buscarModelo( $modelo );
 
             //var_dump( $_POST );
 
             if ( $retorno[0]->total > 0 ) {
-                echo "Não pode incluir, já existe um total de " . $retorno[0]->total;
+                echo "Já existe um produto cadastrado" . $retorno[0]->total;
             } else {
-                $retorno = $this->VeiculoModel->salvarnovo(
-                    $marca, $modelo, $ano, $valor, $imagem, $cor
+                $retorno = $this->ProdutoModel->salvarnovo(
+                    $nome, $perecivel, $tipo_produto, $valor, $imagem
                 ); 
                 
-                header("location: /index.php/veiculo");
+                header("location: /index.php/Produto");
             }
         }
 
         //Excluir 
         public function excluir() {
-            $this->load->model("VeiculoModel");
+            $this->load->model("ProdutoModel");
 
             $id = $_GET["codigo"];
 
-            $this->VeiculoModel->excluir($id);
+            $this->ProdutoModel->excluir($id);
 
-            header("location: /index.php/veiculo");
+            header("location: /index.php/produto");
         }
 
     }

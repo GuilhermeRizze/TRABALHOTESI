@@ -46,14 +46,14 @@
             return false;
         }
 
-        public function CriarSenha( $email, $senha, $chave) {
+        public function CriarSenha( $email, $senha, $usuario) {
 
-            if ( $this->ValidaChave( $email, $chave ) ) {
+            if ( $this->ValidaUsuario( $email, $usuario ) ) {
                 $sql= "
                         UPDATE usuario 
                             SET senha='" . $senha . "'
                         WHERE email='" . $email . "'
-                            AND chave='" . $chave . "'
+                            AND usuario='" . $usuario . "'
                     ";
                 try {
                     $this->db->query($sql);
@@ -66,11 +66,11 @@
             return false;
         }
 
-        public function ValidaChave( $email, $chave ) {
+        public function ValidaUsuario( $email, $usuario ) {
             $sql = "SELECT count(1) as total 
                 FROM usuario
                 WHERE email='" . $email . "'
-                    AND chave='" . $chave . "'
+                    AND usuario='" . $usuario . "'
                 ";
             $retorno = $this->db->query($sql)->result();
 
