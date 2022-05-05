@@ -68,7 +68,7 @@
             $data = array(
                 "titulo"=>"Alteração de Produto",
                 "Produto"=>$retorno[0],
-                "opcoes"=>$this->montaComboCores($retorno[0]->cor) //3, 4, 5
+                "opcoes"=>$this->Tipo_prod($retorno[0]->tipo) //3, 4, 5
             );
 
             $this->template->load("templates/adminTemp", "produto/formAlterar", $data);
@@ -83,7 +83,7 @@
             $id = $_POST["id"];
             $nome = $_POST["nome"];
             $perecivel = $_POST["perecivel"];
-            $tipo_produto = $_POST["tipo_produto"];
+            $tipo_produto = $_POST["tipo"];
             $valor = $_POST["valor"];
             $imagem = $_POST["imagem"];
 
@@ -102,7 +102,7 @@
         //Cadastro
         public function formNovo() {
 
-           $opcao = $this->montaComboCores( 0 );
+           $opcao = $this->Tipo_prod( 0 );
             
            $data = array(
                 'opcoes' => $opcao
@@ -111,15 +111,15 @@
             $this->template->load("templates/adminTemp","/produto/formnovo", $data);
         }
 
-        private function montaComboCores( $idCor ) {
-            $this->load->model("CorModel");
-            $cores = $this->CorModel->selecionarTodos();
+        private function Tipo_prod( $idTipo ) {
+            $this->load->model("TipoModel");
+            $tipos = $this->TipoModel->selecionarTodos();
 
             $option = "";
-            foreach($cores as $linha) {
+            foreach($tipos as $linha) {
                 $selecionado = "";
 
-                if ( $idCor == $linha->id )
+                if ( $idTipo == $linha->id )
                     $selecionado = "selected";
 
 
@@ -127,7 +127,7 @@
                                 value='" . $linha->id . "'
                                 " . $selecionado . "
                             >" 
-                                . $linha->cor . 
+                                . $linha->tipo . 
                             "</option>"; 
             }
 
@@ -141,11 +141,11 @@
 
             $nome = $_POST["nome"];
             $perecivel = $_POST["perecivel"];
-            $tipo_produto = $_POST["tipo_produto"];
+            $tipo_produto = $_POST["tipo"];
             $valor = $_POST["valor"];
             $imagem = $_POST["imagem"];
 
-            $retorno = $this->ProdutoModel->buscarModelo( $modelo );
+            $retorno = $this->ProdutoModel->buscarModelo( $nome );
 
             //var_dump( $_POST );
 

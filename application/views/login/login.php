@@ -57,7 +57,6 @@ colocar ação no form metodo igual a aula8
             </div>
           </div>
         </div>
-        <!-- content-wrapper ends -->
       </div>
       <!-- page-body-wrapper ends -->
     </div>

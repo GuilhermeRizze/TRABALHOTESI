@@ -9,7 +9,7 @@
                                         T.nome_tipo AS tipo_produto
                                     FROM produto AS P
                                     INNER JOIN tipo_produto AS T
-                                        ON T.id = P.cor            
+                                        ON T.id = P.tipo_produto            
                                     ");
                                     
             return $retorno->result();

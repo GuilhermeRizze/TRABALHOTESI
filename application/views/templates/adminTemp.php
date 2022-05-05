@@ -123,7 +123,12 @@
             <li class="notification-item">
               <i class="bi bi-info-circle text-primary"></i>
               <div>
-                <h4>Dicta reprehenderit</h4>
+                <h4>TETSTET
+
+
+
+                TETet
+                </h4>
                 <p>Quae dolorem earum veritatis oditseno</p>
                 <p>4 hrs. ago</p>
               </div>
@@ -280,14 +285,14 @@
       </li><!-- End Dashboard Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="<?php echo base_url();?>index.php/veiculo">
+        <a class="nav-link collapsed" href="<?php echo base_url();?>index.php/produto">
           <i class="bi bi-device-ssd"></i>
           <span>Veículos</span>
         </a>
       </li><!-- End Dashboard Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="<?php echo base_url();?>index.php/cor">
+        <a class="nav-link collapsed" href="<?php echo base_url();?>index.php/tipo">
           <i class="bi bi-file"></i>
           <span>Cores</span>
         </a>
