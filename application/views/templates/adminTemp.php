@@ -31,69 +31,7 @@
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-center flex-grow-1">
           <h5 class="mb-0 font-weight-medium d-none d-lg-flex">Bem vindo a Padaria do Barba!</h5>
-          <ul class="navbar-nav navbar-nav-right ml-auto">
-            <form class="search-form d-none d-md-block" action="#">
-              <i class="icon-magnifier"></i>
-              <input type="search" class="form-control" placeholder="Pesquisar" title="Pesquisar">
-            </form>
-            <li class="nav-item"><a href="#" class="nav-link"><i class="icon-basket-loaded"></i></a></li>
-            <li class="nav-item"><a href="#" class="nav-link"><i class="icon-chart"></i></a></li>
-            <li class="nav-item dropdown">
-              <a class="nav-link count-indicator message-dropdown" id="messageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-                <i class="icon-speech"></i>
-                <span class="count">7</span>
-              </a>
-              <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0" aria-labelledby="messageDropdown">
-                <a class="dropdown-item py-3">
-                  <p class="mb-0 font-weight-medium float-left">You have 7 unread mails </p>
-                  <span class="badge badge-pill badge-primary float-right">View all</span>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item preview-item">
-                  <div class="preview-thumbnail">
-                    <img src="<?php echo base_url();?>public/images/faces/face10.jpg" alt="image" class="img-sm profile-pic">
-                  </div>
-                  <div class="preview-item-content flex-grow py-2">
-                    <p class="preview-subject ellipsis font-weight-medium text-dark">Marian Garner </p>
-                    <p class="font-weight-light small-text"> The meeting is cancelled </p>
-                  </div>
-                </a>
-                <a class="dropdown-item preview-item">
-                  <div class="preview-thumbnail">
-                    <img src="<?php echo base_url();?>public/images/faces/face12.jpg" alt="image" class="img-sm profile-pic">
-                  </div>
-                  <div class="preview-item-content flex-grow py-2">
-                    <p class="preview-subject ellipsis font-weight-medium text-dark">David Grey </p>
-                    <p class="font-weight-light small-text"> The meeting is cancelled </p>
-                  </div>
-                </a>
-                <a class="dropdown-item preview-item">
-                  <div class="preview-thumbnail">
-                    <img src="<?php echo base_url();?>public/images/faces/face1.jpg" alt="image" class="img-sm profile-pic">
-                  </div>
-                  <div class="preview-item-content flex-grow py-2">
-                    <p class="preview-subject ellipsis font-weight-medium text-dark">Travis Jenkins </p>
-                    <p class="font-weight-light small-text"> The meeting is cancelled </p>
-                  </div>
-                </a>
-              </div>
-            </li>
-          
-            <li class="nav-item dropdown d-none d-xl-inline-flex user-dropdown">
-              <a class="nav-link dropdown-toggle" id="UserDropdown" href="public/#" data-toggle="dropdown" aria-expanded="false">
-                <img class="img-xs rounded-circle ml-2" src="images/faces/face8.jpg" alt="Profile image"> <span class="font-weight-normal"> ALTERAR VARIAEL </span></a>
-              <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
-                <div class="dropdown-header text-center">
-                  <img class="img-md rounded-circle" src="images/faces/face8.jpg" alt="Profile image">
-                  <p class="mb-1 mt-3">USUARIO</p><!--USUARIO LOGADO - ALTERAR VARIAVEL-->
-                  <p class="font-weight-light text-muted mb-0"></p><!--USUARIO LOGADO - ALTERAR VARIAVEL-->
-                </div>
-                <a class="dropdown-item"><i class="dropdown-item-icon icon-user text-primary"></i> Meu Perfil <span class="badge badge-pill badge-danger">1</span></a>
-
-                <a class="dropdown-item"><i class="dropdown-item-icon icon-power text-primary"></i>Sair</a>
-              </div>
-            </li>
-          </ul>
+          <!---->
           <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
             <span class="icon-menu"></span>
           </button>
@@ -111,7 +49,7 @@
                   <div class="dot-indicator bg-success"></div>
                 </div>
                 <div class="text-wrapper">
-                  <p class="profile-name">USUARIO</p><!--COLOCAR VARIAVEL-->
+                  <p class="profile-name">USUARIO</p>
                   <p class="designation">Administrador</p>
                 </div>
                 <div class="icon-container">
@@ -124,7 +62,7 @@
               <span class="nav-link">Painel de Controle</span>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="<?php echo base_url();?>public/index.html">
+              <a class="nav-link" href="<?php echo base_url();?>index.php">
                 <span class="menu-title">Painel</span>
                 <i class="icon-screen-desktop menu-icon"></i>
               </a>
@@ -132,20 +70,20 @@
             <li class="nav-item nav-category"><span class="nav-link">ESTOQUE</span></li>
            
             <li class="nav-item">
-              <a class="nav-link" href="<?php echo base_url();?>public/pages/icons/simple-line-icons.html">
+              <a class="nav-link" href="<?php echo base_url();?>index.php/produto">
                 <span class="menu-title">PRODUTOS</span>
                 <i class="icon-globe menu-icon"></i>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="<?php echo base_url();?>public/pages/forms/basic_elements.html">
+              <a class="nav-link" href="<?php echo base_url();?>index.php/produto/formnovo">
                 <span class="menu-title">CADASTRO PRODUTOS</span>
                 <i class="icon-book-open menu-icon"></i>
               </a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="<?php echo base_url();?>public/pages/tables/basic-table.html">
+              <a class="nav-link" href="<?php echo base_url();?>index.php/tipo">
                 <span class="menu-title">CATEGORIAS PRODUTOS</span>
                 <i class="icon-grid menu-icon"></i>
               </a>
@@ -158,7 +96,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="<?php echo base_url();?>public/pages/tables/usuario.html">
+              <a class="nav-link" href="<?php echo base_url();?>index.php/login/consulta">
                 <span class="menu-title">VISUALIZAR USUARIO</span>
                 <i class="icon-grid menu-icon"></i>
               </a>

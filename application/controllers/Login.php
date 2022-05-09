@@ -60,7 +60,7 @@
             $email = $_POST["email"];
             $senha = $_POST["senha"];
 
-            $senha = md5( $senha . $this->qqur);
+            $senha = md5( $senha);
 
             //$this->load->model("LoginModel");
 

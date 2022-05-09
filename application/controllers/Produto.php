@@ -68,7 +68,7 @@
             $data = array(
                 "titulo"=>"Alteração de Produto",
                 "Produto"=>$retorno[0],
-                "opcoes"=>$this->Tipo_prod($retorno[0]->tipo)
+                "opcoes"=>$this->Tipo_prod($retorno[0]->tipo_produto)
             );
 
             $this->template->load("templates/adminTemp", "produto/formAlterar", $data);

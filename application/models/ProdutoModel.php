@@ -29,15 +29,15 @@
         }
 
         //Salvar alterações no veiculo
-        public function salvaraltercao( $id, $nome, $perecivel, $tipo_produto, $valor, $imagem) {
+        public function salvaraltercao( $id, $nome, $perecivel, $valor, $imagem, $tipo_produto) {
             $sql = "UPDATE produto 
                     SET
                         nome = '" . $nome . "',
                         perecivel = '" . $perecivel. "',
-                        valor = " . $valor . "',
+                        valor = " . $valor . ",
                         imagem = '" . $imagem. "',
-                        tipo_produto = " . $tipo_produto . "
-                    WHERE id= " . $id . "
+                        tipo_produto = '" . $tipo_produto . "'
+                    WHERE id= '" . $id . "'
                 ";
 
                 $this->db->query( $sql );

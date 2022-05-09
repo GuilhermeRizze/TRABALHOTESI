@@ -11,17 +11,17 @@
         <input type="hidden" name="id" value="<?php echo $Produto->id; ?>"/>
 
         <label>Nome</label>
-        <input type="text" name="modelo" value="<?php echo $Produto->nome; ?>"/>
+        <input type="text" name="nome" value="<?php echo $Produto->nome; ?>"/>
         <br />
 
         <label>Perecivel</label>
-        <input type="text" name="marca" id="marca" value="<?php echo $Produto->perecivel; ?>" required/>
+        <input type="text" name="perecivel" id="perecivel" value="<?php echo $Produto->perecivel; ?>" required/>
         <br />
 
         <label>Tipo</label>
         <select name="tipo" required>
             <option value="">Escolha o tipo</option>
-            <?php $opcoes ?>
+            <?php echo $opcoes; ?>
         </select>
         <br />
 
