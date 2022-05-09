@@ -8,30 +8,30 @@
 </head>
 <body>
     <form method="POST" action="/index.php/produto/salvaralteracao">
-        <input type="hidden" name="id" value="<?php echo $produto->id; ?>"/>
+        <input type="hidden" name="id" value="<?php echo $Produto->id; ?>"/>
 
         <label>Nome</label>
-        <input type="text" name="modelo" value="<?php echo $produto->nome; ?>"/>
+        <input type="text" name="modelo" value="<?php echo $Produto->nome; ?>"/>
         <br />
 
         <label>Perecivel</label>
-        <input type="text" name="marca" id="marca" value="<?php echo $produto->perecivel; ?>" required/>
+        <input type="text" name="marca" id="marca" value="<?php echo $Produto->perecivel; ?>" required/>
         <br />
 
         <label>Tipo</label>
         <select name="tipo" required>
             <option value="">Escolha o tipo</option>
-            <?php echo $opcoes; ?>
+            <?php $opcoes ?>
         </select>
         <br />
 
 
         <label>Valor</label>
-        <input type="text" name="valor" value="<?php echo $produto->valor; ?>"/>
+        <input type="text" name="valor" value="<?php echo $Produto->valor; ?>"/>
         <br />
 
         <label>Imagem</label>
-        <input type="text" name="imagem" value="<?php echo $produto->imagem; ?>"/>
+        <input type="text" name="imagem" value="<?php echo $Produto->imagem; ?>"/>
         <br />
         
         <br />

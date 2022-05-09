@@ -30,24 +30,26 @@
 
         //Salvar alterações no veiculo
         public function salvaraltercao( $id, $nome, $perecivel, $tipo_produto, $valor, $imagem) {
-            $sql = "UPDATE veiculo 
+            $sql = "UPDATE produto 
                     SET
                         nome = '" . $nome . "',
                         perecivel = '" . $perecivel. "',
-                        tipo_produto = " . $tipo_produto . ",
-                        valor = " . $valor . ",
-                        imagem = '" . $imagem. "'
+                        valor = " . $valor . "',
+                        imagem = '" . $imagem. "',
+                        tipo_produto = " . $tipo_produto . "
                     WHERE id= " . $id . "
                 ";
+
+                $this->db->query( $sql );
 
             return true;
         }
 
-        public function salvarnovo($nome, $perecivel, $tipo_produto, $valor, $imagem) {
+        public function salvarnovo($nome, $perecivel, $valor, $imagem, $tipo_produto) {
             $sql = "INSERT INTO produto 
-                    (nome, perecivel, tipo_produto, valor, imagem)
+                    (nome, perecivel, valor, imagem, tipo_produto)
                     VALUES
-                    ('" .$nome. "', '" . $perecivel ."', '" . $tipo_produto . "', '" . $valor . "', '" . $imagem . "')
+                    ('" .$nome. "', '" . $perecivel ."', '" . $valor . "', '" . $imagem . "', '" . $tipo_produto . "')
                 ";
 
             $this->db->query( $sql );

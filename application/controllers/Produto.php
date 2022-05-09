@@ -68,7 +68,7 @@
             $data = array(
                 "titulo"=>"Alteração de Produto",
                 "Produto"=>$retorno[0],
-                "opcoes"=>$this->Tipo_prod($retorno[0]->tipo) //3, 4, 5
+                "opcoes"=>$this->Tipo_prod($retorno[0]->tipo)
             );
 
             $this->template->load("templates/adminTemp", "produto/formAlterar", $data);
@@ -88,7 +88,7 @@
             $imagem = $_POST["imagem"];
 
             $retorno = $this->ProdutoModel->salvaraltercao(
-                $id, $nome, $perecivel, $tipo_produto, $valor, $imagem,
+                $id, $nome, $perecivel, $valor, $imagem, $tipo_produto
             );
 
             if ($retorno == true) {
@@ -111,7 +111,7 @@
             $this->template->load("templates/adminTemp","/produto/formnovo", $data);
         }
 
-        private function Tipo_prod( $idTipo ) {
+        private function Tipo_prod( $id ) {
             $this->load->model("TipoModel");
             $tipos = $this->TipoModel->selecionarTodos();
 
@@ -119,22 +119,21 @@
             foreach($tipos as $linha) {
                 $selecionado = "";
 
-                if ( $idTipo == $linha->id )
+                if ( $id == $linha->id )
                     $selecionado = "selected";
-
 
                 $option .= "<option 
                                 value='" . $linha->id . "'
                                 " . $selecionado . "
                             >" 
-                                . $linha->tipo . 
+                                . $linha->nome_tipo . 
                             "</option>"; 
             }
 
             return $option;
         }
 
-        //Salvar novo veiculo
+        //Salvar novo produto
         public function salvarnovo() {
             
             $this->load->model("ProdutoModel");
@@ -145,7 +144,7 @@
             $valor = $_POST["valor"];
             $imagem = $_POST["imagem"];
 
-            $retorno = $this->ProdutoModel->buscarModelo( $nome );
+            $retorno = $this->ProdutoModel->buscarNome( $nome );
 
             //var_dump( $_POST );
 
@@ -153,10 +152,10 @@
                 echo "Já existe um produto cadastrado" . $retorno[0]->total;
             } else {
                 $retorno = $this->ProdutoModel->salvarnovo(
-                    $nome, $perecivel, $tipo_produto, $valor, $imagem
+                    $nome, $perecivel, $valor, $imagem, $tipo_produto
                 ); 
                 
-                header("location: /index.php/Produto");
+                header("location: /index.php/produto");
             }
         }
 

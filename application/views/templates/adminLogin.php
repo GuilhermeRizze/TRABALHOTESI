@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Login / Marquinhos Veículos</title>
+  <title>Login PADARIA</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -49,8 +49,8 @@
 
               <div class="d-flex justify-content-center py-4">
                 <a href="index.html" class="logo d-flex align-items-center w-auto">
-                  <img src="<?php echo base_url(); ?>public/assets/img/logo.png" alt="">
-                  <span class="d-none d-lg-block">Marquinhos Login</span>
+                  
+                  <span class="d-none d-lg-block">PADARIA DO BARBA</span>
                 </a>
               </div><!-- End Logo -->
 
@@ -59,8 +59,8 @@
                 <div class="card-body">
 
                   <div class="pt-4 pb-2">
-                    <h5 class="card-title text-center pb-0 fs-4">Login cá sua conta</h5>
-                    <p class="text-center small">Digite o susuário e senha</p>
+                    <h5 class="card-title text-center pb-0 fs-4">Acesse sua conta</h5>
+                    <p class="text-center small">Digite o usuário e senha</p>
                   </div>
 
                   <form class="row g-3 needs-validation"  method="POST" action="/index.php/login/validalogin">
@@ -83,7 +83,7 @@
                     <div class="col-12">
                       <div class="form-check">
                         <input class="form-check-input" type="checkbox" name="remember" value="true" id="rememberMe">
-                        <label class="form-check-label" for="rememberMe">Lembrar deu</label>
+                        <label class="form-check-label" for="rememberMe">Lembrar acesso</label>
                       </div>
                     </div>
                     <div class="col-12">

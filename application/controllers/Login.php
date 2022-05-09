@@ -1,7 +1,6 @@
 <?php
     class Login extends CI_Controller {
 
-        private $qqur = "";
 
         public function __construct() {
             parent::__construct();
@@ -10,28 +9,18 @@
         }
 
         public function SalvarRegistro() {
-            $num1 = rand(0, 9);
-            $num2 = rand(0, 9);
-            $num3 = rand(0, 9);
-            $num4 = rand(0, 9);
-            $num5 = rand(0, 9);
-            $num6 = rand(0, 9);
-
-            $usuario = $num1 . '' . $num2 . ''.
-                        $num3 . '-' . $num4 . ''.
-                        $num5 . '' . $num6 . '';
-
+           
             $data = array(
                 "email" => $_POST["email"],
-                "senha" => $_POST["senha"],
-                "usuario" => $usuario
+                "senha" => md5($_POST["senha"]),
+                "usuario" => $_POST["usuario"]
             );
 
             //$this->load->model("LoginModel");
             $retorno = $this->LoginModel->registrar( $data );
 
             if ( $retorno )
-                echo "Veja seu e-mail, para continuar o cadastro";
+                echo "Usuario Cadastrado com sucesso";
             else
                 echo "Erro ao criar usuário";
         }
@@ -48,7 +37,7 @@
 
         //Alteração de senha
         public function AlterarSenha() {
-            $senha = md5( $_POST["senha"] . $this->qqur );
+            $senha = md5( $_POST["senha"]);
             $email = $_POST["email"];
             $usuario = $_POST["usuario"];
             
@@ -78,7 +67,7 @@
             $retorno = $this->LoginModel->ValidaLogin($email, $senha);
 
             if ( $retorno ) {
-                $_SESSION["tesi2022"] = array(
+                $_SESSION["Usuario"] = array(
                     "email" => $email,
                     "admin" => true
                 );
@@ -95,5 +84,98 @@
             unset($_SESSION);
             header("location: /index.php/login");
         }
+
+
+        public function consulta() {
+            $this->load->model("LoginModel");
+
+            $usuarios = $this->LoginModel->selecionarTodos();
+            $tabela = "";
+
+            //echo "Bem vindo " . @$_SESSION["tesi2022"]["email"];
+
+            foreach($usuarios as $item ) {
+                //GET
+                $tabela = $tabela . "<tr>";
+
+                if ( isset($_SESSION["Usuario"])) {
+                    $tabela = $tabela . "
+                        <td style='cursor: pointer'>
+                            <a href='/index.php/login/alterar?codigo=" . $item->id . "'>
+                                ✏️
+                            </a>
+                            <a href='/index.php/login/excluir?codigo=" . $item->id . "'>
+                                ❌    
+                            </a>
+                        </td>";
+                }
+
+                $tabela = $tabela . "
+                        <td>" . $item->usuario ."</td>
+                        <td>" . $item->senha ."</td>
+                        <td>" . $item->email ."</td>
+                    </tr>
+                ";
+            }
+
+            $var = array(
+                "lista_usuarios" => $usuarios,
+                "tabela" => $tabela,
+                "titulo" => "Você está em PADARIA DO BARBA",
+                "sucesso" => "Adicionado com sucesso",
+                "erro" => "ERRO"
+            );
+
+            $this->template->load("templates/adminTemp", "login/ver", $var );
+        }
+
+        public function alterar() {
+            $this->load->model("LoginModel");
+
+            $id = $_GET["codigo"];
+
+            $retorno = $this->LoginModel->buscarId( $id );
+            
+            $data = array(
+                "titulo"=>"Alteração de Usuario",
+                "Login"=>$retorno[0]
+            );
+
+            $this->template->load("templates/adminTemp", "login/formAlterar", $data);
+
+
+        }
+
+
+        public function salvaralteracao() {
+            $this->load->model("LoginModel");
+
+            $id = $_POST["id"];
+            $usuario = $_POST["usuario"];
+            $senha = md5($_POST["senha"]);
+            $email = $_POST["email"];
+
+            $retorno = $this->LoginModel->salvaraltercao(
+                $id, $usuario, $senha, $email
+            );
+
+            if ($retorno == true) {
+                header('location: /index.php/login/consulta');
+            }
+            else {
+                echo "Ocorreu um erro na alteração";
+            }
+        }
+
+        public function excluir() {
+            $this->load->model("LoginModel");
+
+            $id = $_GET["codigo"];
+
+            $this->LoginModel->excluir($id);
+
+            header("location: /index.php/login/consulta");
+        }
     }
+
 ?>

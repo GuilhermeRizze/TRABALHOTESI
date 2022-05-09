@@ -4,19 +4,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Welcome to CodeIgniter</title>
+	<title>Bem vindo</title>
 
 	<style type="text/css">
 
-	::selection { background-color: #E13300; color: white; }
-	::-moz-selection { background-color: #E13300; color: white; }
-
-	body {
-		background-color: #fff;
-		margin: 40px;
-		font: 13px/20px normal Helvetica, Arial, sans-serif;
-		color: #4F5155;
-	}
 
 	a {
 		color: #003399;
@@ -68,20 +59,34 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body>
 
 <div id="container">
-	<h1>Welcome to CodeIgniter!</h1>
 
 	<div id="body">
-		<p>The page you are looking at is being generated dynamically by CodeIgniter.</p>
-
-		<p>If you would like to edit this page you'll find it located at:</p>
-		<code>application/views/welcome_message.php</code>
-
-		<p>The corresponding controller for this page is found at:</p>
-		<code>application/controllers/Welcome.php</code>
-
-		<p>If you are exploring CodeIgniter for the very first time, you should start by reading the <a href="user_guide/">User Guide</a>.</p>
-	</div>
-
+		<p>Selecione abaixo a opção que deseja</p>
+		<div class="row quick-action-toolbar">
+              <div class="col-md-12 grid-margin">
+                <div class="card">
+                  <div class="card-header d-block d-md-flex">
+                    <h5 class="mb-0">Ações Rápidas</h5>
+                    <p class="ml-auto mb-0">Gerencimento de Funcionários<i class="icon-bulb"></i></p>
+                  </div>
+                  <div class="d-md-flex row m-0 quick-action-btns" role="group" aria-label="Quick action buttons">
+                    <div class="col-sm-6 col-md-3 p-3 text-center btn-wrapper">
+                     <a href="index.php/login/registro"> <button type="button" class="btn px-0"> <i class="icon-user mr-2"></i> Adicionar Usuario</button></a>
+                    </div>
+                    <div class="col-sm-6 col-md-3 p-3 text-center btn-wrapper">
+                      <a href="/index.php/produto/formnovo"> <button type="button" class="btn px-0"><i class="icon-docs mr-2"></i> Adicionar Produto</button></a>
+                    </div>
+                    <div class="col-sm-6 col-md-3 p-3 text-center btn-wrapper">
+                      <a href="<?php echo base_url();?>index.php/produto"> <button type="button" class="btn px-0"><i class="icon-folder mr-2"></i> Visualizar Produtos</button></a>
+                    </div>
+                    <a href="pages\samples\ALTERAR"></a><div class="col-sm-6 col-md-3 p-3 text-center btn-wrapper">
+                      <button type="button" class="btn px-0"><i class="icon-book-open mr-2"></i> Criar Relatório</button></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+		
 	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>
 </div>
 
