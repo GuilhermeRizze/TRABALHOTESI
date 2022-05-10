@@ -14,7 +14,7 @@
         <input type="text" name="usuario" value="<?php echo $Login->usuario; ?>"/>
         <br />
 
-        <label>Senha</label>
+        <label>Redigite a Senha</label>
         <input type="password" name="senha" id="senha" value="" required/>
         <br />
 

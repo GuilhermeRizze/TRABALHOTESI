@@ -170,5 +170,44 @@
             header("location: /index.php/produto");
         }
 
+
+
+
+
+        public function consulta() {
+            $this->load->model("ProdutoModel");
+
+            $produto = $this->ProdutoModel->selecionarTodos();
+            $tabela = "";
+
+            foreach($produto as $item ) {
+
+                $tabela = $tabela . "<li class='wow fadeInLeft' data-wow-duration='300ms' data-wow-delay='300ms'>
+
+                    <div class='blog-img'>
+                        <img src='".$item->imagem."' alt='blog-img'>
+                    </div>
+                    <div class='content-right'>
+                        <h3>".$item->nome."</h3>
+                        <p>Tipo Produto: ".$item->tipo_produto."</p>
+                        <p>Perecivel: ".$item->perecivel."</p>
+                        <p>Valor: R$ ".$item->valor."</p>
+                    </div>
+                    </li>
+                ";
+            }  
+               
+            $variavel = array(
+                "lista_produtos" => $produto,
+                "tabela" => $tabela,
+                "titulo" => "Você está na Padaria do Barba",
+                "sucesso" => "Produto adicionado com sucesso",
+                "erro" => "404"
+            );
+
+            $this->template->load("templates/clienteTemp", "cliente/index", $variavel );
+        
+
     }
+}
 ?>
