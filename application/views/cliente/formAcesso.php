@@ -1,3 +1,3 @@
 <?php
 
-                header("location: /produto/consulta");
+                header("location: /cliente/consulta");

@@ -46,25 +46,7 @@
             return false;
         }
 
-        public function CriarSenha( $email, $senha, $usuario) {
-
-            if ( $this->ValidaUsuario( $email, $usuario ) ) {
-                $sql= "
-                        UPDATE usuario 
-                            SET senha='" . $senha . "'
-                        WHERE email='" . $email . "'
-                            AND usuario='" . $usuario . "'
-                    ";
-                try {
-                    $this->db->query($sql);
-                    return true;
-                }
-                catch (Exception $ex) {
-                    return false;
-                }
-            }
-            return false;
-        }
+       
 
         public function ValidaUsuario( $email, $usuario ) {
             $sql = "SELECT count(1) as total 

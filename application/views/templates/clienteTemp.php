@@ -62,7 +62,7 @@
 
                             <!-- Collect the nav links, forms, and other content for toggling -->
                             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                                <a href="<?php echo base_url();?>produto/consulta" class="btn btn-primary">Home</a>
+                                <a href="<?php echo base_url();?>cliente/consulta" class="btn btn-primary">Home</a>
                                 <a href="#price" class="btn btn-primary">Menu</a>
                                 <a href="<?php echo base_url();?>tipo/pesquisa" class="btn btn-primary">Categorias</a>
 

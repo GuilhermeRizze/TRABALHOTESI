@@ -29,27 +29,9 @@
         public function Registro() {
             $this->load->view('login/register');
         }
+       
 
-        //Apenas chama o formulario
-        public function RegistarSenha() {
-            $this->load->view('login/registrarsenha');
-        }
 
-        //Alteração de senha
-        public function AlterarSenha() {
-            $senha = md5( $_POST["senha"]);
-            $email = $_POST["email"];
-            $usuario = $_POST["usuario"];
-            
-            //$this->load->model("LoginModel");
-            
-            $retorno = $this->LoginModel->CriarSenha($email, $senha, $usuario);
-
-            if ($retorno)
-                echo "Senha cadastrada com sucesso.";
-            else
-                echo "Senha não pode ser cadastrada.";
-        }
 
         //Tela de login
         public function Index() {
