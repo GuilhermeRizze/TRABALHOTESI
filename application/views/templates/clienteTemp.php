@@ -56,22 +56,16 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                               </button>
-                                  <a class="navbar-brand" href="#">
-                                    <img src="<?php echo base_url();?>public/images/logo.png" alt="Logo">
-                                  </a>
+
 
                             </div>
 
                             <!-- Collect the nav links, forms, and other content for toggling -->
                             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                              <ul class="nav navbar-nav navbar-right" id="top-nav">
-                                <li><a href="#hero-area">Home</a></li>
-                                <li><a href="#about-us">about us</a></li>
-                                <li><a href="#blog">Blog</a></li>
-                                <li><a href="#price">menu</a></li>
-                                <li><a href="#subscribe">news</a></li>
-                                <li><a href="#contact-us">contacts</a></li>
-                              </ul>
+                                <a href="<?php echo base_url();?>produto/consulta" class="btn btn-primary">Home</a>
+                                <a href="#price" class="btn btn-primary">Menu</a>
+                                <a href="<?php echo base_url();?>tipo/pesquisa" class="btn btn-primary">Categorias</a>
+
                             </div><!-- /.navbar-collapse -->
                           </div><!-- /.container-fluid -->
                         </nav>
