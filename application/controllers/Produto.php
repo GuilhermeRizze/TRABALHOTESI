@@ -170,6 +170,12 @@
             header("location: /index.php/produto");
         }
 
+        public function acesso() {
+            $this->load->model("ProdutoModel");
+
+            header("location: /formAcesso.php/cliente");
+        }
+
 
 
 
@@ -185,7 +191,7 @@
                 $tabela = $tabela . "<li class='wow fadeInLeft' data-wow-duration='300ms' data-wow-delay='300ms'>
 
                     <div class='blog-img'>
-                        <img src='".$item->imagem."' alt='blog-img'>
+                        <img src='".$item->imagem."' alt='blog-img' style='width:300px'>
                     </div>
                     <div class='content-right'>
                         <h3>".$item->nome."</h3>
@@ -232,7 +238,7 @@
                         <td>" . $item->tipo_produto ."</td>
                         <td>" . $item->valor ."</td>
                         <td>
-                            <img src='" . $item->imagem . "' style='width:150px' />
+                            <img src='" . $item->imagem . "' style='width:300px' />
                         </td>
                     </tr>
                 ";

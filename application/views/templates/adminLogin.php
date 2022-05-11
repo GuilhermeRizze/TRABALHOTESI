@@ -89,9 +89,6 @@
                     <div class="col-12">
                       <button class="btn btn-primary w-100" type="submit">Entrar</button>
                     </div>
-                    <div class="col-12">
-                      <p class="small mb-0">Não tem conta? <a href="pages-register.html">Crie sua conta</a></p>
-                    </div>
 
                   </form>
 
