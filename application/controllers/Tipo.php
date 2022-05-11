@@ -124,5 +124,42 @@
             }
         }
 
+        public function pesquisa() {
+            $this->load->model("TipoModel");
+
+            $tipo = $this->TipoModel->selecionarTodos();
+            $tabela = "";
+
+
+            foreach($tipo as $item ) {
+                //GET
+                $tabela = $tabela . "<tr>";
+
+
+                    $tabela = $tabela . "
+                        <td style='cursor: pointer'>
+                            <a href='/produto/buscar?codigo=" . $item->id . "'>
+                                🔎Buscar
+                            </a>
+                        </td>";
+
+                $tabela = $tabela . "
+                        <td>" . $item->id ."</td>
+                        <td>" . $item->nome_tipo ."</td>
+                    </tr>
+                ";
+            }
+
+            $variavel = array(
+                "lista_tipos" => $tipo,
+                "tabela" => $tabela,
+                "titulo" => "Você está na Padaria do Barba",
+                "sucesso" => "Categoria buscado com sucesso",
+                "erro" => "404"
+            );
+
+            $this->template->load("templates/clienteTemp", "cliente/categoria", $variavel );
+        }
+
     }
 ?>

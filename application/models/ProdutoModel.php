@@ -15,6 +15,16 @@
             return $retorno->result();
         }
 
+        public function buscarCategoria( $id ) {
+            $retorno = $this->db->query( "SELECT
+                                P.*,
+                                T.nome_tipo AS tipo_produto
+                            FROM produto AS P
+                            INNER JOIN tipo_produto AS T
+                                ON T.id = P.tipo_produto  WHERE tipo_produto=" . $id );
+            return $retorno->result();
+        }
+
         public function buscarId( $id ) {
             $retorno = $this->db->query( "SELECT * FROM produto WHERE id=" . $id );
             return $retorno->result();

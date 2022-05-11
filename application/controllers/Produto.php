@@ -209,5 +209,46 @@
         
 
     }
+
+    public function buscar() {
+        $this->load->model("ProdutoModel");
+
+        $id = $_GET["codigo"];
+
+        $retorno = $this->ProdutoModel->buscarCategoria( $id );
+    
+
+        $tabela = "";
+
+            foreach($retorno as $item ) {
+                $tabela = $tabela . "<tr>";
+
+
+                $tabela = $tabela . "
+                        <td></td>
+                        <td>" . $item->id ."</td>
+                        <td>" . $item->nome ."</td>
+                        <td>" . $item->perecivel ."</td>
+                        <td>" . $item->tipo_produto ."</td>
+                        <td>" . $item->valor ."</td>
+                        <td>
+                            <img src='" . $item->imagem . "' style='width:150px' />
+                        </td>
+                    </tr>
+                ";
+            }
+
+            $variavel = array(
+                "lista_produtos" => $retorno,
+                "tabela" => $tabela,
+                "titulo" => "Você está na Padaria do Barba",
+                "sucesso" => "Produto adicionado com sucesso",
+                "erro" => "404"
+            );
+
+            $this->template->load("templates/clienteTemp", "cliente/resultado", $variavel );
+
+
+    }
 }
 ?>
